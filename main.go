@@ -1,7 +1,9 @@
 package main
 
-import core "github.com/Erickype/GoGameEngine/Core"
+import (
+	app "github.com/Erickype/GoGameEngineTest/Application"
+)
 
 func main() {
-	core.Run()
+	app.CreateApplication()
 }
