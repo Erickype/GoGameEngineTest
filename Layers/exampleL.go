@@ -11,7 +11,7 @@ type ExampleLayer struct {
 }
 
 func (e *ExampleLayer) OnUpdate() {
-	Common.ClientLogger.Info(e.GetName(), "Layer: Update")
+	//Common.ClientLogger.Info(e.GetName(), "Layer: Update")
 }
 
 func (e *ExampleLayer) OnEvent(event *Events.IEvent) {
