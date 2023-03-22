@@ -5,10 +5,9 @@ go 1.20
 require github.com/Erickype/GoGameEngine v0.1.1
 
 require (
-	github.com/akiross/go-glad v0.0.0-20190627091720-134da500784b // indirect
-	github.com/go-gl/gl v0.0.0-20190320180904-bf2b1f2f34d7 // indirect
-	github.com/go-gl/glfw v0.0.0-20221017161538-93cebf72946b // indirect
+	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20221017161538-93cebf72946b // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
+	github.com/inkyblackness/imgui-go/v4 v4.7.0 // indirect
 	github.com/jtolds/gls v4.20.0+incompatible // indirect
 	github.com/smartystreets/assertions v1.13.0 // indirect
 	github.com/withmandala/go-log v0.1.0 // indirect
