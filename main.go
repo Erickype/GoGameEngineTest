@@ -1,9 +1,9 @@
 package main
 
 import (
+	Layers "github.com/Erickype/GoGameEngine/API/Layers/ImGui"
 	"github.com/Erickype/GoGameEngine/Core"
 	app "github.com/Erickype/GoGameEngineTest/Application"
-	"github.com/Erickype/GoGameEngineTest/Layers"
 	"runtime"
 )
 
@@ -13,9 +13,8 @@ func init() {
 
 func main() {
 
-	exampleLayer := Layers.ExampleLayer{}
-	exampleLayer.Construct("Example")
-	iLayer := Core.ILayer(&exampleLayer)
+	exampleLayer := Layers.NewImGui()
+	iLayer := Core.ILayer(exampleLayer)
 
 	application := app.Application{}
 	application.Construct(&iLayer)
