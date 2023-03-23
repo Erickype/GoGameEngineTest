@@ -3,7 +3,6 @@ package Layers
 import (
 	"github.com/Erickype/GoGameEngine/API/Events"
 	"github.com/Erickype/GoGameEngine/API/Input"
-	"github.com/Erickype/GoGameEngine/API/Keys"
 	"github.com/Erickype/GoGameEngine/API/Log"
 	core "github.com/Erickype/GoGameEngine/Core"
 )
@@ -14,7 +13,7 @@ type ExampleLayer struct {
 
 func (e *ExampleLayer) OnUpdate() {
 	Log.GetClientInstance().Trace(e.GetName(), " layer: update")
-	if (*Input.GetInputInstance()).IsKeyPressed((int)(Keys.KeySpace), (*core.ApplicationInstance.GetPlatform()).GetWindowPtr()) {
+	if (*Input.GetInputInstance()).IsKeyPressed((int)(Input.KeySpace), (*core.ApplicationInstance.GetPlatform()).GetWindowPtr()) {
 		Log.GetClientInstance().Warn("Key pressed")
 	}
 }

@@ -1,21 +1,30 @@
 package main
 
 import (
-	Layers "github.com/Erickype/GoGameEngine/API/Layers/ImGui"
+	overlay "github.com/Erickype/GoGameEngine/API/Layers/ImGui"
+	"github.com/Erickype/GoGameEngine/API/Platform/Windows"
 	"github.com/Erickype/GoGameEngine/Core"
-	app "github.com/Erickype/GoGameEngineTest/Application"
-	"runtime"
+	"github.com/Erickype/GoGameEngineTest/Application"
+	"github.com/Erickype/GoGameEngineTest/Layers"
 )
 
-func init() {
-	runtime.LockOSThread()
-}
-
 func main() {
+	//Create and initializes the application
+	application := Application.Application{}
+	application.Construct(Windows.CreateAbstractWindow("Game Test", 800, 600))
 
-	exampleLayer := Layers.NewImGui()
-	iLayer := Core.ILayer(exampleLayer)
+	//Push the example layer
+	exampleLayer := Layers.ExampleLayer{}
+	iLayer := Core.ILayer(&exampleLayer)
+	application.PushLayer(&iLayer)
 
-	application := app.Application{}
-	application.Construct(&iLayer)
+	//Push the imGui overlay
+	iLayer = Core.ILayer(overlay.NewImGui())
+	application.PushOverlay(&iLayer)
+
+	//Run the application
+	application.Run()
+
+	//Destroy the application
+	application.Destroy()
 }
