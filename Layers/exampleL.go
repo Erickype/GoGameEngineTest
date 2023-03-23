@@ -1,6 +1,7 @@
 package Layers
 
 import (
+	"fmt"
 	"github.com/Erickype/GoGameEngine/API/Events"
 	"github.com/Erickype/GoGameEngine/API/Input"
 	"github.com/Erickype/GoGameEngine/API/Log"
@@ -12,12 +13,18 @@ type ExampleLayer struct {
 }
 
 func (e *ExampleLayer) OnUpdate() {
-	Log.GetClientInstance().Trace(e.GetName(), " layer: update")
 	if (*Input.GetInputInstance()).IsKeyPressed((int)(Input.KeySpace), (*core.ApplicationInstance.GetPlatform()).GetWindowPtr()) {
-		Log.GetClientInstance().Warn("Key pressed")
+		Log.GetClientInstance().Warn("Key pressed (poll)")
 	}
 }
 
 func (e *ExampleLayer) OnEvent(event *Events.IEvent) {
-	Log.GetClientInstance().Info(e.GetName(), " layer event (event): ", (*event).GetName())
+	if keyPressedEvent, ok := (*event).(*Events.KeyPressedEvent); ok {
+		character := fmt.Sprintf("%c", rune(keyPressedEvent.GetKeyCode()))
+		Log.GetClientInstance().Info(e.GetName(), "layer event (event):", character)
+
+		if keyPressedEvent.GetKeyCode() == (int)(Input.KeySpace) {
+			Log.GetClientInstance().Trace("Key space pressed (event)")
+		}
+	}
 }

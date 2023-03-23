@@ -15,6 +15,7 @@ func main() {
 
 	//Push the example layer
 	exampleLayer := Layers.ExampleLayer{}
+	exampleLayer.Construct("Example")
 	iLayer := Core.ILayer(&exampleLayer)
 	application.PushLayer(&iLayer)
 
