@@ -10,7 +10,7 @@ import (
 
 func main() {
 	//Create and initializes the application
-	application := Application.Application{}
+	application := Application.Application{Application: &Core.Application{}}
 	application.Construct(Windows.CreateAbstractWindow("Game Test", 800, 600))
 
 	//Push the example layer
@@ -19,8 +19,8 @@ func main() {
 	application.PushLayer(&iLayer)
 
 	//Push the imGui overlay
-	iLayer = Core.ILayer(overlay.NewImGui())
-	application.PushOverlay(&iLayer)
+	imGuiLayer := Core.ILayer(overlay.NewImGui())
+	application.PushOverlay(&imGuiLayer)
 
 	//Run the application
 	application.Run()
